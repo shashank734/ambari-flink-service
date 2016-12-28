@@ -56,10 +56,15 @@
 
   <property>
     <name>setup_prebuilt</name>
-    <value>true</value>
+    <value>flase</value>
     <description>If false, will compile Flink from source instead</description>
   </property>   
   
+  <property>
+    <name>flink_branch</name>
+    <value>release-1.2</value>
+    <description>Branch to be cloned</description>
+  </property>
 
   <property>
     <name>hadoop_conf_dir</name>

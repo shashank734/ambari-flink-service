@@ -22,6 +22,7 @@ setup_prebuilt = config['configurations']['flink-ambari-config']['setup_prebuilt
 flink_appname = config['configurations']['flink-ambari-config']['flink_appname']
 flink_queue = config['configurations']['flink-ambari-config']['flink_queue']
 flink_streaming = config['configurations']['flink-ambari-config']['flink_streaming']
+flink_branch = config['configurations']['flink-ambari-config']['flink_branch']
 
 hadoop_conf_dir = config['configurations']['flink-ambari-config']['hadoop_conf_dir']
 flink_download_url = config['configurations']['flink-ambari-config']['flink_download_url']
