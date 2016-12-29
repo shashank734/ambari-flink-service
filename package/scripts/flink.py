@@ -35,39 +35,39 @@ class Master(Script):
          
     
     #User selected option to use prebuilt flink package 
-    if params.setup_prebuilt:
+    # if params.setup_prebuilt:
 
-      Execute('echo Installing packages')
+    #   Execute('echo Installing packages')
         
  
-      #Fetch and unzip snapshot build, if no cached flink tar package exists on Ambari server node
-      if not os.path.exists(params.temp_file):
-        Execute('wget '+params.flink_download_url+' -O '+params.temp_file+' -a '  + params.flink_log_file, user=params.flink_user)
-      Execute('tar -zxvf '+params.temp_file+' -C ' + params.flink_install_dir + ' >> ' + params.flink_log_file, user=params.flink_user)
-      Execute('mv '+params.flink_install_dir+'/*/* ' + params.flink_install_dir, user=params.flink_user)
+    #   #Fetch and unzip snapshot build, if no cached flink tar package exists on Ambari server node
+    #   if not os.path.exists(params.temp_file):
+    #     Execute('wget '+params.flink_download_url+' -O '+params.temp_file+' -a '  + params.flink_log_file, user=params.flink_user)
+    #   Execute('tar -zxvf '+params.temp_file+' -C ' + params.flink_install_dir + ' >> ' + params.flink_log_file, user=params.flink_user)
+    #   Execute('mv '+params.flink_install_dir+'/*/* ' + params.flink_install_dir, user=params.flink_user)
                 
-      #update the configs specified by user
-      self.configure(env, True)
+    #   #update the configs specified by user
+    #   self.configure(env, True)
 
       
-    else:
+    # else:
       #User selected option to build flink from source
        
       #if params.setup_view:
         #Install maven repo if needed
-      self.install_mvn_repo()      
+      #self.install_mvn_repo()      
       # Install packages listed in metainfo.xml
-      self.install_packages(env)    
+      #self.install_packages(env)    
     
       
-      Execute('echo Compiling Flink from source')
-      Execute('cd '+params.flink_install_dir+'; git clone -b release-1.2 https://github.com/apache/flink.git '+params.flink_install_dir +' >> ' + params.flink_log_file)
-      Execute('chown -R ' + params.flink_user + ':' + params.flink_group + ' ' + params.flink_install_dir)
+    Execute('echo Compiling Flink from source')
+    Execute('cd '+params.flink_install_dir+'; git clone -b release-1.2 https://github.com/apache/flink.git '+params.flink_install_dir +' >> ' + params.flink_log_file)
+    Execute('chown -R ' + params.flink_user + ':' + params.flink_group + ' ' + params.flink_install_dir)
                 
-      Execute('cd '+params.flink_install_dir+'; tools/change-scala-version.sh 2.11; mvn clean install -DskipTests -Dhadoop.version=2.7.3.2.5.3.0-37 -Pvendor-repos >> ' + params.flink_log_file, user=params.flink_user)
+    Execute('cd '+params.flink_install_dir+'; tools/change-scala-version.sh 2.11; mvn clean install -DskipTests -Dhadoop.version=2.7.3.2.5.3.0-37 -Pvendor-repos >> ' + params.flink_log_file, user=params.flink_user)
       
       #update the configs specified by user
-      self.configure(env, True)
+    self.configure(env, True)
 
   
 
