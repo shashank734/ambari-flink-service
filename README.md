@@ -1,3 +1,7 @@
+#### An Ambari Service for Flink 1.2-SNAPSHOT
+
+This forked from  [abajwa-hw/ambari-flink-service](https://github.com/abajwa-hw/ambari-flink-service) Added support for Flink 1.2-SNAPSHOT build from source. This Repo pull flink from my forked repo where i have applied one patch cause there was build issue while building on Scala 2.11.
+
 #### An Ambari Service for Flink
 Ambari service for easily installing and managing Flink on HDP clusters.
 Apache Flink is an open source platform for distributed stream and batch data processing
